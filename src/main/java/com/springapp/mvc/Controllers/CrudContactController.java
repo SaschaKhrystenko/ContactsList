@@ -18,13 +18,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/add")
-public class AddContactController {
+@RequestMapping("/crud")
+public class CrudContactController {
 
 	@Autowired
 	private ContactService contactService;
 
-	@RequestMapping( method = RequestMethod.POST )
+	@RequestMapping( method = RequestMethod.POST, value = "/add")
 	public String addContact(
 			@ModelAttribute("contact")@Valid Contact contact,
 			BindingResult result,@RequestParam("account_id") Long loginId, Map map) throws IOException, ClassNotFoundException {
@@ -34,13 +34,28 @@ public class AddContactController {
 		}
 
 		contactService.addContact(contact, loginId);
-		map.put("usersContactList",contactService.contactListByAccountId(loginId));
 
+		map.put("account_id", loginId);
 		ContactServiceXMLFile xmlFile = new ContactServiceXMLFileImpl();
 		xmlFile.addContact(contact);
 
-		return "addContact";
+		return "redirect:/crud";
 
+	}
+
+	@RequestMapping("/delete/{contactId}/{accountId}")
+	public String deleteContact(@PathVariable("contactId") Long contactId, @PathVariable("accountId") Long accountId, ModelMap modelMap) {
+
+		try{
+			contactService.removeContact(contactId);
+		}
+		catch (Exception e){
+			System.out.println(e.getStackTrace());
+		}
+
+		modelMap.addAttribute("account_id",accountId);
+
+		return "redirect:/crud";
 	}
 
 
@@ -48,7 +63,9 @@ public class AddContactController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String displayContactForm(ModelMap model, @RequestParam("account_id")Long account_id) {
 
+
 		model.addAttribute("contact", new Contact());
+		model.addAttribute("usersContactList", contactService.contactListByAccountId(account_id));
 		model.addAttribute("account_id",account_id);
 
 

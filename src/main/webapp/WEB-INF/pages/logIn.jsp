@@ -14,12 +14,10 @@
 <head>
   <script type='text/javascript'>
     function validate(){
-      //вытягиваем значения из полей формы и присв. им переменные
       var userNameValue = document.forms["regForm"]["userName"].value;
       var userPasswordValue = document.forms['regForm']["userPassword"].value;
       var userFullName = document.forms["regForm"]["userFN"].value;
 
-      //Логин (только английские символы, не меньше 3х, без спецсимволов)
       if ( userNameValue.length<3||/[^a-zA-Z]+/.test(userNameValue)){
         document.getElementById("uName").innerHTML="*wrong input, please reenter"+
         "(Login at least 3 symbols only EN)"
@@ -27,7 +25,6 @@
       }
       else document.getElementById("uName").innerHTML=""
 
-      //Пароль (содержание минимум 1 цифры и 1 заглавной, минимум 5 символов)
       if (userPasswordValue.length<5||!(/.*[0-9].*/.test(userPasswordValue))||!(/.*[A-Z].*/.test(userPasswordValue))){
         document.getElementById("uPasw").innerHTML="*wrong input, please reenter"+
         "(Password at least 5 symbols, min one number and one letter in upperCase)"
@@ -35,7 +32,6 @@
       }
       else document.getElementById("uPasw").innerHTML=""
 
-      //ФИО (минимум 5 символов)
       if ( userFullName.length<5||/[^a-zA-Z]+/.test(userFullName)){
         document.getElementById("uFN").innerHTML="*wrong input, please repeat"+
         "(At least 5 symbols)"
@@ -58,38 +54,23 @@
 
 <body>
 
-<%--<form action="/logIn"  name="regForm" method="post" onsubmit='return validate()'>
-
-  Name:<input type="text" name="userName" required="required"> <span style='color:red' id='uName'></span>
-  <br>
-  Password:<input type="password" name="userPassword" required="required"><span style='color:red' id='uPasw'></span>
-  <br>
-  Last First Middle<input type='text' name='userFN' required="required"> <span style='color:red' id='uFN'></span><br />
-  <button type="submit">submit</button>
-
-</form>--%>
-
-<%--Error Message--%>
-
-
-
 
 <%--LogIn form--%>
-<form:form method="POST" commandName="account" action="/logIn" >
+<form:form method="POST" commandName="account" action="/logIn" name="regForm" onsubmit='return validate()' >
   <table>
     <tr>
       <td>Login :</td>
-      <td><form:input path="login"/></td>
+      <td><form:input path="login" required="required" name="userName" /> <span style='color:red' id='uName'></span></td>
       <td><form:errors path="login" cssClass="error" /></td>
     </tr>
     <tr>
       <td>Password :</td>
-      <td><form:input path="password" /></td>
+      <td><form:input path="password" type="password" required="required" name="userPassword"/><span style='color:red' id='uPasw'></span</td>
       <td><form:errors path="password" cssClass="error" /></td>
     </tr>
     <tr>
       <td>FullName :</td>
-      <td><form:input path="fullName" /></td>
+      <td><form:input path="fullName" required="required" name="userFN"/> <span style='color:red' id='uFN'></span></td>
       <td><form:errors path="fullName" cssClass="error" /></td>
     </tr>
     <tr>

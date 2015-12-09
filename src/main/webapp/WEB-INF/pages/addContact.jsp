@@ -26,7 +26,7 @@
 	</div>
 </c:if>
 
-<form:form method="POST" commandName="contact" action="/add">
+<form:form method="POST" commandName="contact" action="/crud/add">
 	<table>
 		<tr>
 			<td>Customer Name :</td>
@@ -97,7 +97,7 @@
 				<td>${contact.address}</td>
 				<td>${contact.email}</td>
 
-				<td><a href="delete/${contact.id}"><spring:message code="label.delete" /></a></td>
+				<td><a href="/crud/delete/${contact.id}/${account_id}"><spring:message code="label.delete" /></a></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -54,7 +54,7 @@ public class LogInSignInController {
             Long accountId = logInService.authenticate(account.getLogin(), account.getPassword());
             if (accountId != 0) {
                 model.addAttribute("account_id", accountId);
-                return "redirect:/add";
+                return "redirect:/crud";
             } else {
                 model.addAttribute("error", true);
             }
@@ -68,7 +68,7 @@ public class LogInSignInController {
                 model.addAttribute("success", true);
                 model.addAttribute("account_id", account.getId());
                 model.addAttribute("userName",account.getLogin());
-                return "redirect:/add";
+                return "redirect:/crud";
             }
             else  model.addAttribute("double_login",true);
 

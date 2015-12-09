@@ -35,10 +35,13 @@ public class ContactDAOImpl implements ContactDAO {
 
     @Override
     public void removeContact(Long contactId) {
+
+
         Contact contact = (Contact) sessionFactory.getCurrentSession().load(
                 Contact.class, contactId);
         if (null != contact) {
             sessionFactory.getCurrentSession().delete(contact);
+            sessionFactory.getCurrentSession().flush();
         }
     }
 }
