@@ -41,7 +41,7 @@ public class ContactDAOImpl implements ContactDAO {
                 Contact.class, contactId);
         if (null != contact) {
             sessionFactory.getCurrentSession().delete(contact);
-            sessionFactory.getCurrentSession().flush();
+
         }
     }
 }
