@@ -17,7 +17,6 @@ public class LogInServiceImpl implements LogInService{
     @Transactional
     @Override
     public Long authenticate(String login, String password) {
-        logInDAO.authenticate(login,password);
         return logInDAO.authenticate(login,password);
     }
 }

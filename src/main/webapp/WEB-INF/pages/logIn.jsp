@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ua001022
-  Date: 26.11.2015
-  Time: 19:48
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -12,6 +6,7 @@
 
 <html>
 <head>
+
   <script type='text/javascript'>
     function validate(){
       var userNameValue = document.forms["regForm"]["userName"].value;
@@ -42,6 +37,8 @@
     }
 
   </script>
+
+
     <title></title>
 
   <style>
@@ -59,17 +56,17 @@
 <form:form method="POST" commandName="account" action="/logIn" name="regForm" onsubmit='return validate()' >
   <table>
     <tr>
-      <td>Login :</td>
+      <td>Login * :</td>
       <td><form:input path="login" required="required" name="userName" /> <span style='color:red' id='uName'></span></td>
       <td><form:errors path="login" cssClass="error" /></td>
     </tr>
     <tr>
-      <td>Password :</td>
+      <td>Password * :</td>
       <td><form:input path="password" type="password" required="required" name="userPassword"/><span style='color:red' id='uPasw'></span</td>
       <td><form:errors path="password" cssClass="error" /></td>
     </tr>
     <tr>
-      <td>FullName :</td>
+      <td>FullName * :</td>
       <td><form:input path="fullName" required="required" name="userFN"/> <span style='color:red' id='uFN'></span></td>
       <td><form:errors path="fullName" cssClass="error" /></td>
     </tr>
@@ -88,7 +85,7 @@
   <c:when test="${error == true}">
     <div class="row">
       <div class="container">
-        <div class="alert alert-danger text-center">Log In failed. Check your login/password.</div>
+        <div class="error">Log In failed. Check your login/password.</div>
       </div>
     </div>
   </c:when>
@@ -99,12 +96,11 @@
   <c:when test="${double_login == true}">
     <div class="row">
       <div class="container">
-        <div class="alert alert-danger text-center">Sign In failed. Provided login already exist, please choose different.</div>
+        <div class="error">Sign In failed. Provided login already exist, please choose different.</div>
       </div>
     </div>
   </c:when>
 </c:choose>
-
 
 
 </body>

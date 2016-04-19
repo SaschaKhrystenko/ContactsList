@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * Created by ua001022 on 04.12.2015.
@@ -37,6 +38,13 @@ public class Account {
     @Column
     @XStreamAlias("FullName")
     private String fullName;
+
+
+    /*@OneToMany()
+    @JoinColumn(name = "accountId")
+
+    @XStreamAlias("ContactList")
+    private List<Contact> contactList;*/
 
 
 

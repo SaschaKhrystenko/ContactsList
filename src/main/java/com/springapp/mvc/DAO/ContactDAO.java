@@ -14,4 +14,5 @@ public interface ContactDAO {
     public List<Contact> contactListByAccountId(Long accountId);
 
     public void removeContact(Long contactId);
+    public void editContact (Long id);
 }

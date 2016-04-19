@@ -14,5 +14,5 @@ public interface ContactServiceXMLFile {
 
     public List<Contact> listContact() throws IOException, ClassNotFoundException;
 
-    public void removeContact(Integer id);
+    public void removeContact(Long id) throws IOException, ClassNotFoundException;
 }

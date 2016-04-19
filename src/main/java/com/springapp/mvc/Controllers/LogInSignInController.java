@@ -1,6 +1,5 @@
 package com.springapp.mvc.Controllers;
 
-import com.springapp.mvc.DAO.LogInDAO;
 import com.springapp.mvc.Model.Account;
 import com.springapp.mvc.Service.LogInService;
 import com.springapp.mvc.Service.RegisterService;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * Created by ua001022 on 04.12.2015.
@@ -54,6 +52,8 @@ public class LogInSignInController {
             Long accountId = logInService.authenticate(account.getLogin(), account.getPassword());
             if (accountId != 0) {
                 model.addAttribute("account_id", accountId);
+                model.addAttribute("userName", account.getLogin());
+                model.addAttribute("success", false);
                 return "redirect:/crud";
             } else {
                 model.addAttribute("error", true);

@@ -66,6 +66,7 @@ public class Contact {
 
     @ManyToOne
     @JoinColumn(name="accountId")
+    @XStreamAlias("Account")
     private Account account;
 
     public Contact() {

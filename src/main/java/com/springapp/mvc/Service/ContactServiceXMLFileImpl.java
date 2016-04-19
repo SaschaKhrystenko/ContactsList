@@ -2,19 +2,22 @@ package com.springapp.mvc.Service;
 
 import com.springapp.mvc.DAO.ContactDAOStorageXML;
 import com.springapp.mvc.DAO.ContactDAOStorageXMLImp;
+import com.springapp.mvc.Model.Account;
 import com.springapp.mvc.Model.Contact;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ua001022 on 03.12.2015.
- */
+
+@Service
 public class ContactServiceXMLFileImpl implements ContactServiceXMLFile {
 
-    ContactDAOStorageXML contactDAOStorageXML = new ContactDAOStorageXMLImp();
+   @Autowired
+   private ContactDAOStorageXML contactDAOStorageXML;
 
     @Override
     public void addContact(Contact contact) throws IOException, ClassNotFoundException {
@@ -32,7 +35,17 @@ public class ContactServiceXMLFileImpl implements ContactServiceXMLFile {
     }
 
     @Override
-    public void removeContact(Integer id) {
+    public void removeContact(Long id)  throws IOException, ClassNotFoundException {
+        List<Contact>currentCustomerList = contactDAOStorageXML.unmarshalling(new File("C:\\Java\\ContactXML.xml"));
+
+        for(Contact contact: currentCustomerList){
+            if(contact.getId()==id){
+                currentCustomerList.remove(contact);
+            }
+        }
+
+        contactDAOStorageXML.marshallerAfterContactRemove(currentCustomerList, "ContactXML");
+
 
     }
 }

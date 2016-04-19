@@ -1,20 +1,16 @@
 package com.springapp.mvc.Controllers;
 
-import com.springapp.mvc.Model.Account;
 import com.springapp.mvc.Model.Contact;
 import com.springapp.mvc.Service.ContactService;
 import com.springapp.mvc.Service.ContactServiceXMLFile;
-import com.springapp.mvc.Service.ContactServiceXMLFileImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -23,6 +19,9 @@ public class CrudContactController {
 
 	@Autowired
 	private ContactService contactService;
+
+	@Autowired
+	private ContactServiceXMLFile contactServiceXMLFile;
 
 	@RequestMapping( method = RequestMethod.POST, value = "/add")
 	public String addContact(
@@ -36,8 +35,8 @@ public class CrudContactController {
 		contactService.addContact(contact, loginId);
 
 		map.put("account_id", loginId);
-		ContactServiceXMLFile xmlFile = new ContactServiceXMLFileImpl();
-		xmlFile.addContact(contact);
+		contactServiceXMLFile.addContact(contact);
+
 
 		return "redirect:/crud";
 
@@ -48,6 +47,8 @@ public class CrudContactController {
 
 		try{
 			contactService.removeContact(contactId);
+			contactServiceXMLFile.removeContact(contactId);
+
 		}
 		catch (Exception e){
 			System.out.println(e.getStackTrace());
@@ -61,12 +62,15 @@ public class CrudContactController {
 
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String displayContactForm(ModelMap model, @RequestParam("account_id")Long account_id) {
+	public String displayContactForm(ModelMap model, @RequestParam("account_id")Long account_id/*, @RequestParam("success")Boolean success,
+									 @RequestParam("userName")String userName*/) {
 
+			model.addAttribute("contact", new Contact());
+		//	model.addAttribute("success", success);
+			model.addAttribute("usersContactList", contactService.contactListByAccountId(account_id));
+			model.addAttribute("account_id", account_id);
+		//	model.addAttribute("userName", userName);
 
-		model.addAttribute("contact", new Contact());
-		model.addAttribute("usersContactList", contactService.contactListByAccountId(account_id));
-		model.addAttribute("account_id",account_id);
 
 
 		return "addContact";

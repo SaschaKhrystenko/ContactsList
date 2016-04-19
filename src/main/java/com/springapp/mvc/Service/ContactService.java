@@ -14,4 +14,6 @@ public interface ContactService {
 
     public void removeContact(Long contactId);
 
+    public void editContact (Long contactId);
+
 }

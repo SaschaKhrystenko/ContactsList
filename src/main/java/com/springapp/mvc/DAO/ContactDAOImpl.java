@@ -44,4 +44,10 @@ public class ContactDAOImpl implements ContactDAO {
 
         }
     }
+
+    @Override
+    public void editContact(Long id) {
+        Contact contactForUpdate  = (Contact) sessionFactory.getCurrentSession().get(Contact.class, new Long(id));
+        sessionFactory.getCurrentSession().update(contactForUpdate);
+    }
 }

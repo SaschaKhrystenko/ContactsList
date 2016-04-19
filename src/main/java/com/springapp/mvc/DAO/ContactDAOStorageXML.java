@@ -13,6 +13,7 @@ public interface ContactDAOStorageXML {
     public void marshaller(List<Contact> obj, String nameXmlFile)throws IOException, ClassNotFoundException;
     public void saveToFile(String xml, String nameFile) throws IOException;
     public List<Contact> unmarshalling(File file)throws IOException, ClassNotFoundException;
+    public  void marshallerAfterContactRemove(List<Contact> contactList, String nameXmlFie) throws IOException;
 
 
 }

@@ -35,4 +35,10 @@ public class ContactServiceImpl implements ContactService {
         contactDAO.removeContact(contactID);
 
     }
+
+    @Transactional
+    @Override
+    public void editContact(Long contactId) {
+        contactDAO.editContact(contactId);
+    }
 }
