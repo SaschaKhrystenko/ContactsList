@@ -9,17 +9,16 @@
 
 
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/tablesorter/2.17.4/js/jquery.tablesorter.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.25.8/css/theme.default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.25.8/css/theme.default.min.css">--%>
 
 
 	<%--Problem with local libraries *Failed to load resource: Server respomonded with status 404 (Not Found) --%>
 
-	<%--<c:url value="/js/jquery-1.12.3.js" var="myUrl" />
-	<script type="text/javascript" src="${myUrl}"/>
-	<script type="text/javascript" src="/plugin/Mottie-tablesorter-08bf513/js/jquery.tablesorter.js"> </script>
-	<link rel="stylesheet" href="/plugin/Mottie-tablesorter-08bf513/css/theme.default.css">--%>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.12.3.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/plugin/Mottie-tablesorter-08bf513/js/jquery.tablesorter.js"/>"> </script>
+	<link rel="stylesheet" href="<c:url value="/resources/plugin/Mottie-tablesorter-08bf513/css/theme.default.css"/>">
 
 	<script>
 
