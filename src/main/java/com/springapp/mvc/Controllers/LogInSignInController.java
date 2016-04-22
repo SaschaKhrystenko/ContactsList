@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 
-/**
- * Created by ua001022 on 04.12.2015.
- */
+
 @Controller
 @RequestMapping("/")
 public class LogInSignInController {

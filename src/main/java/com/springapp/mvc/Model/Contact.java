@@ -9,9 +9,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 
-/**
- * Created by ua001022 on 26.11.2015.
- */
 
 @Entity
 @Table

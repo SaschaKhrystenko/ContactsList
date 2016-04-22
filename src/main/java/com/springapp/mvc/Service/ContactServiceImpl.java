@@ -8,9 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by ua001022 on 27.11.2015.
- */
+
 @Service
 public class ContactServiceImpl implements ContactService {
 
@@ -38,7 +36,13 @@ public class ContactServiceImpl implements ContactService {
 
     @Transactional
     @Override
-    public void editContact(Long contactId) {
-        contactDAO.editContact(contactId);
+    public Contact getContactById(Long contactId) {
+        return contactDAO.getContactById(contactId);
+    }
+
+    @Transactional
+    @Override
+    public void editContact(Contact contact, Long contactId, Long accountId) {
+       contactDAO.editContact(contact,contactId,accountId);
     }
 }

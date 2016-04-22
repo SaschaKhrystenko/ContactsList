@@ -12,9 +12,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ua001022 on 03.12.2015.
- */
+
 @Repository
 public class ContactDAOStorageXMLImp implements ContactDAOStorageXML {
     @Override

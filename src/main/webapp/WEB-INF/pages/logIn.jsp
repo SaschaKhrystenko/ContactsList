@@ -71,10 +71,10 @@
       <td><form:errors path="fullName" cssClass="error" /></td>
     </tr>
     <tr>
-        <td colspan="3"><input type="submit" name="login_button"
+        <td><input type="submit" name="login_button"
                            value="<spring:message code="label.logIn"/>" /></td>
-    </tr>
-         <td colspan="3"><input type="submit" name="signIn_button"
+
+         <td><input type="submit" name="signIn_button"
                              value="<spring:message code="label.signIn"/>" /></td>
     </tr>
   </table>

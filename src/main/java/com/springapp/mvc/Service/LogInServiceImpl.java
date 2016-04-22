@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by ua001022 on 07.12.2015.
- */
+
 @Service
 public class LogInServiceImpl implements LogInService{
 

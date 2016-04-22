@@ -10,9 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ua001022 on 27.11.2015.
- */
+
 @Repository
 public class ContactDAOImpl implements ContactDAO {
 
@@ -46,8 +44,16 @@ public class ContactDAOImpl implements ContactDAO {
     }
 
     @Override
-    public void editContact(Long id) {
-        Contact contactForUpdate  = (Contact) sessionFactory.getCurrentSession().get(Contact.class, new Long(id));
-        sessionFactory.getCurrentSession().update(contactForUpdate);
+    public Contact getContactById(Long contactId) {
+        Contact contact  = (Contact) sessionFactory.getCurrentSession().get(Contact.class, new Long(contactId));
+        return contact;
+    }
+
+    @Override
+    public void editContact(Contact contact,Long contactId, Long accountId) {
+        Account account = (Account) sessionFactory.getCurrentSession().get(Account.class, new Long(accountId));
+        contact.setAccount(account);
+        contact.setId(contactId);
+        sessionFactory.getCurrentSession().update(contact);
     }
 }

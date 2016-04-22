@@ -8,9 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by ua001022 on 06.12.2015.
- */
+
 @Repository
 public class LogInDAOImpl implements LogInDAO {
 

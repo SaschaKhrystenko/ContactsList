@@ -8,9 +8,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-/**
- * Created by ua001022 on 04.12.2015.
- */
+
 @Entity
 @Table
 @XStreamAlias("Account")
@@ -30,7 +28,7 @@ public class Account {
 
     @Size(min = 5)
     @Column
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$")
+    //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$")
     @XStreamAlias("Password")
     private String password;
 
@@ -39,12 +37,6 @@ public class Account {
     @XStreamAlias("FullName")
     private String fullName;
 
-
-    /*@OneToMany()
-    @JoinColumn(name = "accountId")
-
-    @XStreamAlias("ContactList")
-    private List<Contact> contactList;*/
 
 
 
